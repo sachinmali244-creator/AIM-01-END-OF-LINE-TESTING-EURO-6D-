@@ -295,36 +295,205 @@ body{
     animation:pulse 2s infinite;
 }
 
-/* ================= MANUFACTURER CONTACT ================= */
+/* =========================================================
+   DIGITAL MANUFACTURER CONTACT CARD
+========================================================= */
 
 .manufacturer-contact{
-    margin:30px auto;
-    max-width:900px;
-    padding:22px;
-    border-radius:16px;
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.15);
-    box-shadow:0 8px 25px rgba(0,0,0,0.20);
+    position:relative;
+    max-width:950px;
+    margin:35px auto;
+    padding:28px;
+    border-radius:20px;
+
+    background:
+        linear-gradient(135deg,
+        rgba(0,255,255,0.08),
+        rgba(0,80,120,0.12),
+        rgba(0,0,0,0.35));
+
+    border:1px solid rgba(0,255,255,0.45);
+
+    box-shadow:
+        0 0 12px rgba(0,255,255,0.15),
+        0 0 35px rgba(0,180,255,0.08),
+        inset 0 0 25px rgba(0,255,255,0.04);
+
+    overflow:hidden;
+    backdrop-filter:blur(10px);
 }
+
+/* Digital scanning line */
+
+.manufacturer-contact::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,255,255,0.9),
+        transparent
+    );
+
+    animation:contactScan 4s linear infinite;
+}
+
+@keyframes contactScan{
+    0%{
+        left:-100%;
+    }
+    100%{
+        left:100%;
+    }
+}
+
+/* Header */
 
 .manufacturer-contact h2{
-    margin-top:0;
+    margin:0 0 25px 0;
+    padding-bottom:14px;
+
     text-align:center;
+
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1.5px;
+
+    color:#00eaff;
+
+    text-shadow:
+        0 0 8px rgba(0,234,255,0.7),
+        0 0 18px rgba(0,234,255,0.35);
+
+    border-bottom:1px solid rgba(0,255,255,0.25);
 }
+
+/* Contact item */
 
 .contact-item{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
     margin:10px 0;
-    line-height:1.6;
+    padding:13px 16px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
+/* Hover effect */
+
+.contact-item:hover{
+    transform:translateX(5px);
+
+    background:rgba(0,255,255,0.07);
+
+    border-color:rgba(0,255,255,0.45);
+
+    box-shadow:
+        0 0 12px rgba(0,255,255,0.12);
+}
+
+/* Labels */
+
+.contact-item strong{
+    min-width:150px;
+
+    color:#8eefff;
+
+    font-size:14px;
+    letter-spacing:0.5px;
+}
+
+/* Values */
+
+.contact-item{
+    color:#eafcff;
+    font-size:14px;
+}
+
+/* Links */
+
 .contact-item a{
-    color:inherit;
+    color:#00eaff;
+
     text-decoration:none;
+
+    font-weight:600;
+
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
 }
 
 .contact-item a:hover{
-    text-decoration:underline;
-   }
+    color:#ffffff;
+
+    text-shadow:
+        0 0 8px #00eaff,
+        0 0 15px rgba(0,234,255,0.7);
+}
+
+/* Small digital corner details */
+
+.manufacturer-contact::after{
+    content:"CONTACT • OEM";
+    position:absolute;
+
+    right:18px;
+    bottom:8px;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    color:rgba(0,234,255,0.45);
+}
+
+/* Mobile responsive */
+
+@media(max-width:600px){
+
+    .manufacturer-contact{
+        margin:25px 12px;
+        padding:20px 15px;
+        border-radius:16px;
+    }
+
+    .manufacturer-contact h2{
+        font-size:18px;
+    }
+
+    .contact-item{
+        display:block;
+        padding:12px;
+    }
+
+    .contact-item strong{
+        display:block;
+        min-width:auto;
+        margin-bottom:4px;
+        font-size:12px;
+    }
+
+    .contact-item{
+        font-size:13px;
+    }
+}
 /* =========================================================
    MAIN CONTAINER
 ========================================================= */
